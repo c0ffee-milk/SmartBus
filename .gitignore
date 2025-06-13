@@ -2,3 +2,4 @@
 .vscode/
 __pycache__
 back/logs/app.log
+back/.env
