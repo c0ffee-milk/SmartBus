@@ -1,0 +1,13 @@
+flask==2.0.1
+flask-sqlalchemy==2.5.1
+flask-jwt-extended==4.3.1
+flask-cors==3.0.10
+pymysql==1.0.2
+cryptography==3.4.7
+requests==2.26.0
+python-dotenv==0.19.0
+qrcode==7.3.1
+pillow==8.3.1
+apscheduler==3.8.1
+redis==5.0.1
+flask-redis==0.4.0 

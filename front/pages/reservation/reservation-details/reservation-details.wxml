@@ -1,0 +1,52 @@
+<!-- 导航栏 -->
+<navigation-bar title="预约详情" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+
+<!-- 修改后的WXS过滤器 -->
+<wxs module="dateFilter">
+  function formatDate(dateStr) {
+    // 先替换T为空格
+    var formatted = dateStr.replace('T', ' ');
+    // 截取到秒部分
+    return formatted.split('.')[0];
+  }
+  module.exports = {
+    formatDate: formatDate
+  }
+</wxs>
+
+<!-- 页面内容 -->
+<view class="page-container">
+  <!-- 预约卡片 -->
+  <view class="reservation-card">
+    <!-- 卡片头部 -->
+    <view class="card-header">
+      <view class="reservation-date-row">
+        <text class="reservation-date-text">{{dateFilter.formatDate(reservationDetail.reserved_at)}}</text>  <!-- 使用过滤器格式化时间 -->
+      </view>
+      <view class="reservation-status">
+        <text>{{reservationDetail.status}}</text>  <!-- 修改为reservationDetail.status -->
+      </view>
+    </view>
+    
+    <!-- 行程信息 -->
+    <view class="route-container">
+      <view class="route-point">
+        <view class="timeline-dot start"></view>
+        <text class="location-content">{{reservationDetail.schedule_id}}</text>  <!-- 修改为reservationDetail.schedule_id -->
+      </view>
+    </view>
+    
+    <!-- 详细信息 -->
+    <view class="detail-container">
+      <view class="detail-item">
+        <text class="detail-label">座位号:</text>
+        <text class="detail-value">{{reservationDetail.seat_number}}</text>  <!-- 修改为reservationDetail.seat_number -->
+      </view>
+    </view>
+    
+    <view class="qrcode-container">
+      <canvas canvas-id="qrcodeCanvas" style="width: 340rpx; height: 340rpx;"></canvas>
+      <button bindtap="saveQRCode">保存二维码</button>
+    </view>
+  </view>
+</view>

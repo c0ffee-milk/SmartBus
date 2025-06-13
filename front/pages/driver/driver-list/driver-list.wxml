@@ -1,0 +1,64 @@
+<navigation-bar title="我的班次" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<view class="page-bg">
+  <view class="container">
+    
+    <!-- 优化司机卡片结构，分行展示内容 -->
+    <view class="driver-card">
+      <view class="driver-info">
+        <view class="info-line">
+          <text class="info-label">姓名：</text>
+          <text class="info-value">{{driverName || '暂无姓名'}}</text>
+        </view>
+        <view class="info-line">
+          <text class="info-label">工号：</text>
+          <text class="info-value">{{driverId || '暂无工号'}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 修改筛选区域结构 -->
+    <!-- 修改后的均衡分布筛选栏 -->
+    <view class="filter-container">
+      <picker mode="date" bindchange="onDateChange">
+        <view class="filter-item {{selectedDate ? 'active' : ''}}">
+          {{selectedDate || '选择日期'}}
+        </view>
+      </picker>
+      <picker mode="selector" range="{{statusOptions}}" range-key="label" bindchange="onStatusChange">
+        <view class="filter-item {{selectedStatus ? 'active' : ''}}">
+          {{selectedStatus || '选择状态'}}
+        </view>
+      </picker>
+    </view>
+    
+    <!-- 班次列表 -->
+    <view class="schedule-list">
+      <block wx:for="{{schedules}}" wx:key="id">
+        <!-- 修改班次卡片，添加点击事件绑定 -->
+        <!-- 修改班次卡片结构，保持设计统一 -->
+        <view class="schedule-item" bindtap="navigateToScheduleDetail" data-id="{{item.id}}">
+          <view class="schedule-header">
+            <text class="route-name">{{item.route_name}}</text>
+            <text class="status {{item.status}}">
+              {{item.status === 'normal' ? '正常' : item.status === 'canceled' ? '已取消' : '延误'}}
+            </text>
+          </view>
+          <view class="schedule-info">
+            <text>{{item.start_point}} → {{item.end_point}}</text>
+            <text>发车时间: {{item.departure_time}}</text>
+          </view>
+          <view class="schedule-footer">
+            <text>座位: {{item.checked_in_seats}}/{{item.total_seats}}</text>
+            <image class="arrow-icon" src="/images/arrow-right.png"></image>
+          </view>
+        </view>
+      </block>
+      
+      <!-- 加载更多提示 -->
+      <view wx:if="{{isLoading}}" class="loading-more">
+        <text>加载中...</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="spacer"></view>

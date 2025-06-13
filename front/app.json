@@ -1,0 +1,67 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/mines/mines",
+
+    "pages/driver/scan/scan",
+    "pages/driver/driver-list/driver-list",
+    "pages/driver/schedule-detail/schedule-detail",
+  
+
+    "pages/reservation/reservation-list/reservation-list",
+    "pages/reservation/reservation-notice/reservation-notice",
+    "pages/reservation/reservation-details/reservation-details",
+    
+    "pages/admin/orders/orders",
+    "pages/admin/admin-mines/admin-mines",
+    "pages/admin/export/export",
+    "pages/admin/reservationDetail/reservationDetail"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "tabBar": {
+    "custom": true,
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "班车预约",
+        "iconPath": "images/VehicleBus.png",
+        "selectedIconPath": "images/Selected_VehicleBus.png"
+      },
+      {
+        "pagePath": "pages/reservation/reservation-list/reservation-list",
+        "text": "我的预约",
+        "iconPath": "images/reserve.png",
+        "selectedIconPath": "images/reserve.png"
+      },
+      {
+        "pagePath": "pages/mines/mines",
+        "text": "我的",
+        "iconPath": "images/mine.png",
+        "selectedIconPath": "images/Selected_mine.png"
+      },
+      {
+        "pagePath": "pages/driver/scan/scan",
+        "text": "扫码"
+      },
+      {
+        "pagePath": "pages/driver/driver-list/driver-list",
+        "text": "司机"
+      },
+      {
+        "pagePath":"pages/admin/orders/orders",
+        "text":"班次情况"
+      },
+      {
+        "pagePath":"pages/admin/admin-mines/admin-mines",
+        "text":"管理"
+      }
+      
+    ]
+  }
+}

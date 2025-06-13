@@ -1,0 +1,30 @@
+<!--pages/scan/scan.wxml-->
+<navigation-bar title="司机扫码签到" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<view class="container">
+  <!-- 加载状态提示 -->
+  <view wx:if="{{isLoading}}" class="loading">
+    <image src="/images/loading.gif" mode="aspectFit"></image>
+    <text>正在处理...</text>
+  </view>
+  
+  <!-- 扫码按钮 -->
+  <button bindtap="scanCode" class="scan-btn" hover-class="btn-hover">
+    <image src="/images/scan.png" mode="aspectFit"></image>
+    <text>点击扫码</text>
+  </button>
+  
+  <!-- 扫码结果展示 -->
+  <view wx:if="{{scanResult}}" class="result">
+    <text>最近扫码: {{scanResult}}</text>
+  </view>
+  
+  <!-- 签到成功信息展示 -->
+  <view wx:if="{{checkInInfo}}" class="checkin-info">
+    <view class="info-item">
+      <text>用户姓名: {{checkInInfo.user_name}}</text>
+    </view>
+    <view class="info-item">
+      <text>座位号: {{checkInInfo.seat_number}}</text>
+    </view>
+  </view>
+</view>

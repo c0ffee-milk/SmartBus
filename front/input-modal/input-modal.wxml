@@ -1,0 +1,16 @@
+<view class="modal-mask" wx:if="{{show}}" bindtap="hideModal" catchtouchmove="preventTouchMove"></view>
+<view class="modal-container" wx:if="{{show}}">
+  <view class="modal-title">{{title}}</view>
+  <view class="input-item">
+    <text>姓名：</text>
+    <input type="text" placeholder="请输入姓名" bindinput="onNameInput" value="{{name}}" />
+  </view>
+  <view class="input-item">
+    <text>学号：</text>
+    <input type="text" placeholder="请输入学号" bindinput="onCardInput" value="{{card}}" />
+  </view>
+  <view class="modal-footer">
+    <button class="modal-btn cancel" bindtap="hideModal">取消</button>
+    <button class="modal-btn confirm" bindtap="confirm">确定</button>
+  </view>
+</view>

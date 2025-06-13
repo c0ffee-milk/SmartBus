@@ -1,0 +1,108 @@
+<!-- 背景容器 -->
+<view class="my-reservation-bg">
+  <!-- 自定义导航栏 -->
+  <navigation-bar title="预约记录" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+  
+  <!-- 状态选择器 -->
+  <view class="status-filter-container">
+    <picker 
+      mode="selector" 
+      range="{{statusDisplayList}}"
+      value="{{selectedStatusIndex}}"
+      bindchange="bindStatusChange"
+    >
+      <view class="status-filter">
+        <text class="filter-text">{{statusDisplayList[selectedStatusIndex] || '全部状态'}}</text>
+      </view>
+    </picker>
+  </view>
+
+  <!-- 预约记录内容容器 -->
+  <view class="my-reservation-container content-scroll">
+    <!-- 如果有预约记录 -->
+    <scroll-view 
+      wx:if="{{reservationList.length > 0}}"
+      class="reservation-scroll"
+      scroll-y="true"
+      scroll-with-animation="true"
+      enable-back-to-top="true"
+      enhanced="true"
+      show-scrollbar="false"
+      style="height: calc(100vh - 280rpx); padding-bottom: 60rpx; -webkit-overflow-scrolling: touch;"
+    >
+      <block wx:for="{{reservationList}}" wx:key="id">
+        <view 
+          class="reservation-card" 
+          style="animation-delay: {{index * 120}}ms; transform: translateZ(0);"  
+          bindtap="handleModalButtonTap" 
+          data-id="{{item.id}}"
+          data-schedule-id="{{item.scheduleId}}"
+          data-status="{{item.status}}"
+          data-seat-number="{{item.seatNumber}}"
+          data-reservation-time="{{item.reservationTime}}"
+          data-priority-used="{{item.priority_used}}"
+        >
+          
+          <!-- 卡片头部 - 时间+状态 -->
+          <view class="card-header">
+            <view class="reservation-date-row">
+              <text class="reservation-date-icon">⏰预约时间</text>
+              <text class="reservation-date-text">{{item.reservationTime}}</text>
+            </view>
+            <view class="reservation-status">
+              <text>{{item.status}}</text>
+            </view>
+          </view>
+          
+          <!-- 卡片主体 - 行程信息 -->
+          <view class="card-body">
+            <!-- 行程路线 -->
+            <view class="route-container">
+              <view class="route-point">
+                <view class="timeline-dot start"></view>
+                <text class="location-content">{{item.startLocation}}</text>
+              </view>
+              <view class="timeline-line"></view>
+              <view class="route-point">
+                <view class="timeline-dot end"></view>
+                <text class="location-content">{{item.endLocation}}</text>
+              </view>
+            </view>
+          
+            <!-- 详细信息 -->
+            <view class="detail-container">
+              <view class="detail-item">
+                <text class="detail-label">班次:</text>
+                <text class="detail-value">{{item.scheduleId}}</text>
+              </view>
+              <view class="detail-item">
+                <text class="detail-label">座位号:</text>
+                <text class="detail-value">{{item.seatNumber}}</text>
+              </view>
+              <view class="detail-item" wx:if="{{item.priority_used}}">
+                <text class="detail-label">教师优先:</text>
+                <text class="detail-value">是</text>
+              </view>
+            </view>
+          </view>
+          
+          <!-- 操作按钮 -->
+          <view wx:if="{{item.status === '待完成'}}" class="action-container">
+            <button 
+              class="cancel-btn"
+              bindtap="handleCancelReservation"
+              >
+              取消预约
+            </button>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+    <!-- 无预约记录 -->
+    <view wx:else class="empty-state">
+      <text class="empty-text">暂无预约记录</text>
+    </view>
+  </view>
+</view>
+
+

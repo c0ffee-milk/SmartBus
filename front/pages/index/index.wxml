@@ -1,0 +1,56 @@
+<!--index.wxml-->
+<navigation-bar title="班车预约" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+
+<!-- 地点选择区域 -->
+<view class="location-picker">
+  <view class="location-display">
+    <view class="location-item" bindtap="selectStartPoint">
+      <text class="label">始发站</text>
+      <view class="location-value">{{startPoint}}</view>
+    </view>
+    <view class="location-item" bindtap="selectEndPoint">
+      <text class="label">目的地</text>
+      <view class="location-value">{{endPoint}}</view>
+    </view>
+  </view>
+</view>
+
+<!-- 日期选择区域 -->
+<view class="date-picker" bindtap="selectDate">
+  <text class="date-label">选择时间:</text>
+  <text class="selected-date">{{selectedDate}}</text>
+</view>
+
+<!-- 班次列表区域 -->
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <block wx:for="{{schedules}}" wx:key="id">
+      <view class="schedule-item">
+        <!-- 时间信息 -->
+        <view class="time-info">
+          <view class="time-item">
+            <text>{{item.departure_time}} 发车</text>
+          </view>
+        </view>
+        
+        <!-- 路线信息 -->
+        <view class="route-info">
+          <text class="route-name">{{item.route_name}}</text>
+        </view>
+       
+        <!-- 座位信息 -->
+        <view class="seats-info">
+          <text>剩余座位: {{item.total_seats - item.available_seats}}/{{item.total_seats}}</text>
+        </view>
+        
+        <!-- 操作按钮 -->
+        <view class="button-area">
+          <button size="mini" type="{{item.is_booked ? 'warn' : 'primary'}}" 
+                  bindtap="handleSchedule" id="{{item.id}}">
+            {{item.is_booked ? '取消预约' : '预约'}}
+          </button>
+        </view>
+      </view>
+    </block>
+  </view>
+</scroll-view>

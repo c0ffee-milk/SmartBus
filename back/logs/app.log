@@ -1,0 +1,3 @@
+2025-06-07 14:59:35,882 - app - INFO - Request: GET / - IP: 127.0.0.1
+2025-06-07 14:59:36,568 - app - INFO - Request: GET /favicon.ico - IP: 127.0.0.1
+2025-06-07 16:13:45,136 - app - INFO - Request: GET / - IP: 127.0.0.1

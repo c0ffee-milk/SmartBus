@@ -1,0 +1,304 @@
+/* 页面背景 */
+.page-bg {
+  min-height: 100vh;
+  background: #f6f8fa;
+}
+
+/* 容器样式 */
+.container {
+  padding: 32rpx 0 100rpx 0;
+  max-width: 96vw;
+  margin: 0 auto;
+}
+
+/* 司机卡片样式 */
+.driver-card {
+  background: linear-gradient(120deg, #44e09e 0%, #0a7b4e 100%);
+  border-radius: 24rpx;
+  box-shadow: 0 6rpx 24rpx rgba(29,149,63,0.12);
+  width: 92vw;
+  max-width: 600rpx;
+  padding: 36rpx 30rpx 30rpx 36rpx;
+  margin: 24rpx auto 28rpx auto;
+  display: flex;
+  align-items: center;
+}
+
+/* 信息 */
+.driver-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+  color: #fff;
+}
+
+/* 每一行 */
+.info-line {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+
+.info-label {
+  font-weight: bold;
+  width: 120rpx;
+  font-size: 30rpx;
+  opacity: 0.92;
+}
+
+.info-value {
+  font-size: 30rpx;
+  font-weight: 500;
+  opacity: 0.95;
+}
+
+/* 筛选项区域样式 */
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 24rpx;
+  margin: 24rpx auto 28rpx auto;
+  padding: 0 10rpx;
+  width: 92vw;
+  max-width: 600rpx;
+}
+
+/* 筛选项 */
+.filter-item {
+  flex: 1 1 40%;
+  min-width: 180rpx;
+  padding: 22rpx 0;
+  margin: 0;
+  text-align: center;
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.08);
+  border: 1rpx solid #e6e6e6;
+  font-size: 30rpx;
+  color: #444;
+  transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.filter-item.active {
+  background: linear-gradient(90deg, #1D953F 70%, #2BB24C 100%);
+  color: #fff;
+  border-color: #1D953F;
+  box-shadow: 0 8rpx 28rpx rgba(29,149,63,0.12);
+}
+.filter-item:active {
+  transform: scale(0.97);
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.11);
+}
+.filter-item:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 10rpx 30rpx rgba(0,0,0,0.15);
+}
+
+/* 班次列表整体样式 */
+.schedule-list {
+  margin-top: 25rpx;
+  padding: 0 10rpx;
+  width: 92vw;
+  max-width: 600rpx;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 班次卡片 */
+.schedule-item {
+  width: 100%;
+  margin: 0 auto 36rpx auto;
+  padding: 0;
+  background: linear-gradient(120deg, #fafdff 78%, #e8fff3 100%);
+  border-radius: 32rpx;
+  box-shadow: 0 10rpx 32rpx rgba(0,0,0,0.13), 0 1rpx 0 #e0f5ea;
+  border: 1rpx solid #e2f4eb;
+  transition: box-shadow 0.2s, transform 0.16s;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.56s cubic-bezier(.51,1.17,.63,1.14) backwards;
+  display: block;
+}
+
+/* 放大缩小动画 */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30rpx) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 班次卡片内容整体布局 */
+.schedule-item-content {
+  padding: 50rpx 50rpx 50rpx 42rpx; /* 增大内边距 */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* 头部信息 */
+.schedule-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18rpx;
+}
+
+.route-name {
+  font-size: 38rpx;
+  font-weight: 800;
+  color: #232323;
+  letter-spacing: 1rpx;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  padding-left: 38rpx;
+}
+.route-name::before {
+  content: "";
+  display: inline-block;
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2bb24c 70%, #44e09e 100%);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 1rpx 3rpx rgba(44,224,158,0.10);
+}
+
+/* 状态 */
+.status {
+  padding: 8rpx 28rpx;
+  border-radius: 16rpx;
+  font-size: 26rpx;
+  font-weight: bold;
+  letter-spacing: 2rpx;
+  background: #ededed;
+  color: #858585;
+  border: none;
+  box-shadow: 0 2rpx 6rpx rgba(0,0,0,0.04);
+}
+/* 正常 */
+.status.normal {
+  background: linear-gradient(87deg, #e7f8ed 80%, #d6ffe8 100%);
+  color: #1D953F;
+}
+/* 取消 */
+.status.canceled {
+  background: linear-gradient(87deg, #ffeaea 80%, #ffd6d6 100%);
+  color: #d9534f;
+}
+/* 延误 */
+.status.delayed {
+  background: linear-gradient(87deg, #fffbe7 80%, #fff1a6 100%);
+  color: #f7b500;
+}
+
+/* 班次基本信息美化 */
+.schedule-info {
+  margin: 14rpx 0 10rpx 0;
+  color: #666;
+  font-size: 28rpx;
+  line-height: 1.8;
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+  padding-left: 2rpx;
+  min-width: 0;
+}
+.schedule-info text {
+  display: block;
+  letter-spacing: 0.5rpx;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.schedule-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #888;
+  font-size: 26rpx;
+  margin-top: 16rpx;
+  border-top: 1rpx dashed #e5e5e5;
+  padding-top: 12rpx;
+}
+
+.schedule-footer text {
+  font-weight: 500;
+  letter-spacing: 0.5rpx;
+}
+
+/* 座位数高亮优化 */
+.schedule-footer text:first-child {
+  color: #1D953F;
+  background: #eaf9f0;
+  padding: 4rpx 18rpx 4rpx 12rpx;
+  border-radius: 10rpx;
+  font-size: 25rpx;
+  margin-right: 8rpx;
+}
+
+.arrow-icon {
+  width: 34rpx;
+  height: 34rpx;
+  opacity: 0.72;
+  margin-left: 8rpx;
+  vertical-align: middle;
+}
+
+/* 卡片悬浮点击效果增强 */
+.schedule-item:active,
+.schedule-item:focus {
+  transform: translateY(3rpx) scale(0.985);
+  box-shadow: 0 16rpx 32rpx rgba(0,0,0,0.18);
+  background: linear-gradient(120deg, #f6fffa 80%, #e7fff2 100%);
+}
+
+/* loading 提示 */
+.loading-more {
+  text-align: center;
+  color: #bbb;
+  font-size: 26rpx;
+  padding: 30rpx 0 10rpx 0;
+  letter-spacing: 2rpx;
+}
+
+/* 页面底部占位 */
+.spacer {
+  height: 58rpx;
+}
+
+/* 响应式小屏优化 */
+@media screen and (max-width: 350px) {
+  .container, .driver-card, .filter-container, .schedule-list {
+    max-width: 100vw;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .driver-card, .filter-container, .schedule-list {
+    width: 98vw;
+  }
+}
+
+/* 小动画及细节增强 */
+.schedule-item-content {
+  animation: popIn 0.4s cubic-bezier(.31,1.2,.58,.99) backwards;
+}
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.97) translateY(16rpx);}
+  100% { opacity: 1; transform: scale(1) translateY(0);}
+}
