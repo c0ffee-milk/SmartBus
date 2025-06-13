@@ -90,9 +90,9 @@ Page({
     const baseUrl = app.globalData.baseUrl;
 
     if (!name || !card) {
-      console.error('请输入姓名和学号');
+      console.error('请输入姓名和学工号');
       wx.showToast({
-        title: '请输入姓名和学号',
+        title: '请输入姓名和学工号',
         icon: 'none',
       });
     }

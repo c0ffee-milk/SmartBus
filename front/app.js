@@ -5,6 +5,8 @@
  */
 App({
   // 全局共享数据
+
+  towxml : require('/towxml/index'),
   globalData: {
       userInfo: null,    // 用户信息对象
       accessToken: null, // 登录凭证

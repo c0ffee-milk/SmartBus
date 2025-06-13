@@ -50,7 +50,6 @@ Page({
     selectedDate: new Date().toISOString().split('T')[0], // 默认设置为当天日期
     selectedStatus: 'normal', // 默认设置为normal状态
     statusOptions: [
-      {label: '全部', value: null},
       {label: '正常', value: 'normal'},
       {label: '已取消', value: 'canceled'},
       {label: '延误', value: 'delayed'}

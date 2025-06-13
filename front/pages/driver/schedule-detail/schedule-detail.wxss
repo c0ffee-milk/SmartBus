@@ -1,36 +1,23 @@
 /* 页面容器 */
 .container {
-  padding: 40rpx 0 110rpx 0;
-  background-color: #f7f7f7;
-  min-height: 100vh;
-  max-width: 96vw;
-  margin: 0 auto;
-}
-
-/* 加载状态 */
-.loading {
-  text-align: center;
-  padding: 56rpx 0 48rpx 0;
-  color: #aaa;
-  font-size: 30rpx;
-  letter-spacing: 2rpx;
-  background: linear-gradient(90deg,#fafdff 60%,#e8fff3 100%);
-  border-radius: 20rpx;
-  margin-bottom: 30rpx;
-  animation: fadeInUp 0.5s;
+  padding: 40rpx 30rpx 120rpx 30rpx;
+  background-color: #ffffff;
+  overflow-y: auto;
 }
 
 /* 班次卡片 */
 .schedule-card {
   background: linear-gradient(120deg, #fafdff 80%, #e8fff3 100%);
   border-radius: 32rpx;
-  padding: 52rpx 44rpx 40rpx 44rpx;
-  margin-bottom: 38rpx;
   box-shadow: 0 12rpx 36rpx rgba(0,0,0,0.10),0 1rpx 0 #e0f5ea;
   border: 1rpx solid #e2f4eb;
   animation: fadeInUp 0.5s;
   position: relative;
   overflow: visible;
+  padding: 32rpx 28rpx;
+  width: 90%;
+  margin: 0 auto 20rpx; /* 水平居中+下边距 */
+  margin-bottom: 20rpx; /* 下边距从40rpx调整为20rpx */
 }
 
 /* 入场动画 */
@@ -119,14 +106,21 @@
   font-size: 28rpx;
 }
 
-/* 信息项值 */
+/* 信息项值 - 允许换行 */
 .schedule-card .value {
-  flex: 1;
-  color: #333;
-  font-size: 28rpx;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal; /* 移除强制不换行 */
+  word-break: break-all; /* 允许单词内断行 */
+  display: -webkit-box; /* 多行文本截断 */
+  -webkit-box-orient: vertical;
+  line-height: 1.4em;
+}
+
+/* 调整布局比例 */
+.info-row {
+  align-items: flex-start; /* 顶部对齐 */
+}
+.label {
+  width: 140rpx; /* 略微缩小标签宽度 */
 }
 
 /* 数据统计区 */
@@ -168,12 +162,13 @@
 /* 乘客列表 */
 .passenger-list {
   background: #fff;
-  border-radius: 28rpx;
-  overflow: hidden;
-  margin-bottom: 38rpx;
+  margin-top: 10rpx; /* 上边距从20rpx调整为10rpx */
+  overflow: visible;
   box-shadow: 0 6rpx 20rpx rgba(0,0,0,0.06);
   border: 1rpx solid #f1f1f1;
   animation: fadeInUp 0.35s;
+  width: 90%;
+  padding: 32rpx 28rpx;
 }
 
 /* 列表头 */
@@ -184,6 +179,12 @@
   border-bottom: 1rpx solid #e5e5e5;
   background: #fafdff;
   letter-spacing: 1rpx;
+}
+.arrow-down {
+  font-size: 18px;
+  color: #000000;
+  margin: 4px 0;
+  line-height: 1;
 }
 
 /* 乘客列表 */
@@ -291,3 +292,10 @@
   margin-top: 32rpx;
   animation: fadeInUp 0.6s;
 }
+
+.route-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+

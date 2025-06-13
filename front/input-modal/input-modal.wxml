@@ -7,7 +7,7 @@
   </view>
   <view class="input-item">
     <text>学号：</text>
-    <input type="text" placeholder="请输入学号" bindinput="onCardInput" value="{{card}}" />
+    <input type="text" placeholder="请输入学工号" bindinput="onCardInput" value="{{card}}" />
   </view>
   <view class="modal-footer">
     <button class="modal-btn cancel" bindtap="hideModal">取消</button>

@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "custom-tabBar": "/custom-tab-bar/index",
-    "navigation-bar": "/components/navigation-bar/navigation-bar"
+    "navigation-bar": "/components/navigation-bar/navigation-bar",
+    "towxml": "/towxml/towxml"
   }
 }

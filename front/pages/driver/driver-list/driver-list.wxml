@@ -26,7 +26,7 @@
       </picker>
       <picker mode="selector" range="{{statusOptions}}" range-key="label" bindchange="onStatusChange">
         <view class="filter-item {{selectedStatus ? 'active' : ''}}">
-          {{selectedStatus || '选择状态'}}
+          {{selectedStatus === 'normal' ? '正常' : selectedStatus === 'canceled' ? '取消' : selectedStatus === 'delayed' ? '延误' : '选择状态'}}
         </view>
       </picker>
     </view>
