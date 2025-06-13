@@ -105,6 +105,7 @@ page {
   margin-bottom: 0;
   word-break: break-all;
   box-shadow: 0 2rpx 8rpx rgba(44,224,158,0.04);
+  overflow: hidden; /* 添加overflow处理长内容 */
 }
 
 /* 统计数据项 */
@@ -248,4 +249,16 @@ page {
 ::-webkit-scrollbar-thumb {
   background: #d2f8e6;
   border-radius: 8rpx;
+}
+
+/* 添加文本选择样式 */
+text {
+  user-select: text;  
+  -webkit-user-select: text; 
+}
+
+/* 针对特定提示文本的样式 */
+.no-data text {
+  user-select: text;
+  -webkit-user-select: text;
 }

@@ -15,7 +15,7 @@
   <view class="analysis-card" wx:if="{{analysis.summary}}">
     <view class="card-title">AI分析建议</view>
     <view class="analysis-content">
-      <text>{{analysis.suggestions}}</text>
+      <towxml nodes="{{analysis.markdownContent}}"/>
     </view>
   </view>
 </view>
@@ -42,7 +42,7 @@
   
   <!-- 无数据提示 -->
   <view wx:if="{{!loading && statistics.length === 0}}" class="no-data">
-    <text>暂无统计数据</text>
+    <text>终止日期一定要早于今天</text>
   </view>
 
 

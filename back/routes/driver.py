@@ -180,6 +180,8 @@ def get_schedule_detail(schedule_id):
                 vehicle_plate: 车牌号
                 status: 班次状态
                 total_seats: 总座位数
+                reserved_seats: 已预约座位数
+                checked_in_seats: 已签到座位数
                 reservations: [
                     {
                         id: 预约ID
@@ -240,6 +242,8 @@ def get_schedule_detail(schedule_id):
                 'vehicle_plate': schedule.vehicle_plate,
                 'status': schedule.status.value,
                 'total_seats': schedule.dynamic_capacity,
+                'reserved_seats': get_reservation_stats(schedule.id)['total'],
+                'checked_in_seats': get_reservation_stats(schedule.id)['checked_in'],
                 'reservations': reservation_list
             }
         }

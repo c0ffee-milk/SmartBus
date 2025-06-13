@@ -13,19 +13,34 @@
       <text class="status {{schedule.status}}">{{schedule.status === 'normal' ? '正常' : schedule.status === 'canceled' ? '已取消' : '延误'}}</text>
     </view>
     
+    <!-- 在文件顶部添加wxs过滤器 -->
+    <wxs module="filters">
+    function formatDateTime(dateStr) {
+      if (!dateStr) return '';
+      return dateStr.replace('T', ' ').split('.')[0]; // 移除T字符并去除毫秒
+    }
+    module.exports = {
+      formatDateTime: formatDateTime
+    };
+    </wxs>
+    
     <view class="info-row">
       <text class="label">发车时间：</text>
-      <text class="value">{{schedule.departure_datetime}}</text>
+      <text class="value">{{filters.formatDateTime(schedule.departure_datetime)}}</text>
     </view>
     
     <view class="info-row">
       <text class="label">路线：</text>
-      <text class="value">{{schedule.start_point}} → {{schedule.end_point}}</text>
+      <view class="route-container">
+        <text class="value">{{schedule.start_point}}</text>
+        <text class="arrow-down">↓</text>
+        <text class="value">{{schedule.end_point}}</text>
+      </view>
     </view>
     
     <view class="info-row">
       <text class="label">车牌号：</text>
-      <text class="value">{{schedule.vehicle_plate}}</text>
+      <text class="value">{{schedule.vehicle_plate ? schedule.vehicle_plate : '无'}}</text> <!-- 添加三元运算符判断 -->
     </view>
     
     <view class="stats">

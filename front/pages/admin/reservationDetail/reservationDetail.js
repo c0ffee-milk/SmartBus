@@ -1,38 +1,25 @@
-// pages/admin/reservationDetail/reservationDetail.js
-const app = getApp();  // 获取小程序实例
-const baseUrl = app.globalData.baseUrl;  // 基础API地址
-
+const app = getApp();
+const baseUrl = app.globalData.baseUrl;
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     statistics: [], // 统计数据
     loading: false, // 加载状态
     startDate: '', // 起始日期
     endDate: '', // 终止日期
+    analysis: {
+      markdownContent: {}
+    }
   },
-
-  // 添加日期格式化方法
-  formatDate(date) {
-      const year = date.getFullYear();
-      const month = String(date.getMonth() + 1).padStart(2, '0');
-      const day = String(date.getDate()).padStart(2, '0');
-      return `${year}-${month}-${day}`; // 返回YYYY-MM-DD格式
+  onLoad: function() {
+    const today = this.formatDate(new Date());
+    this.setData({ 
+      startDate: today,
+      endDate: today 
+    });
+    this.fetchStatistics();
   },
-
-  onLoad() {
-      const today = this.formatDate(new Date());
-      this.setData({ 
-        startDate: today,
-        endDate: today 
-      });
-      this.fetchStatistics();
-  },
-
   // 获取统计数据
-  fetchStatistics() {
+  fetchStatistics: function() {
     this.setData({ loading: true });
     wx.request({
       url: `${baseUrl}/admin/statistics`,
@@ -58,6 +45,19 @@ Page({
             icon: 'none'
           });
         }
+        // 在获取AI分析结果后添加
+        if (res.data.analysis) {
+          const mdContent = res.data.analysis.suggestions || '';
+          const markdownObj = app.towxml(mdContent, 'markdown', {
+            theme: 'light',
+            events: {
+              tap: e => console.log('tap', e)
+            }
+          });
+          this.setData({
+            'analysis.markdownContent': markdownObj
+          });
+        }
       },
       fail: (err) => {
         // 处理请求失败
@@ -71,13 +71,11 @@ Page({
       }
     });
   },
-
   // 日期变化处理
   onStartDateChange(e) {
     this.setData({ startDate: e.detail.value });
     this.fetchStatistics();
   },
-
   onEndDateChange(e) {
     this.setData({ endDate: e.detail.value });
     this.fetchStatistics();

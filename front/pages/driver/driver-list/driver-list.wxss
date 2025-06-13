@@ -1,23 +1,18 @@
-/* 页面背景 */
-.page-bg {
-  min-height: 100vh;
-  background: #f6f8fa;
-}
-
 /* 容器样式 */
 .container {
   padding: 32rpx 0 100rpx 0;
-  max-width: 96vw;
+  width: 100%;
   margin: 0 auto;
 }
 
-/* 司机卡片样式 */
+/* 司机卡片样式 - 修改为更柔和的绿色渐变 */
 .driver-card {
-  background: linear-gradient(120deg, #44e09e 0%, #0a7b4e 100%);
+  background: linear-gradient(120deg, #5fd8a5 0%, #1a9d6e 100%);
+  box-shadow: 0 6rpx 24rpx rgba(95,216,165,0.15);
   border-radius: 24rpx;
   box-shadow: 0 6rpx 24rpx rgba(29,149,63,0.12);
-  width: 92vw;
-  max-width: 600rpx;
+  width: 75%;
+  
   padding: 36rpx 30rpx 30rpx 36rpx;
   margin: 24rpx auto 28rpx auto;
   display: flex;
@@ -54,7 +49,7 @@
   opacity: 0.95;
 }
 
-/* 筛选项区域样式 */
+/* 筛选项区域样式 - 优化版 */
 .filter-container {
   display: flex;
   flex-wrap: wrap;
@@ -66,7 +61,7 @@
   max-width: 600rpx;
 }
 
-/* 筛选项 */
+/* 筛选项 - 优化版 */
 .filter-item {
   flex: 1 1 40%;
   min-width: 180rpx;
@@ -75,53 +70,86 @@
   text-align: center;
   background: #fff;
   border-radius: 20rpx;
-  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.08);
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.1); /* 阴影加深 */
   border: 1rpx solid #e6e6e6;
   font-size: 30rpx;
   color: #444;
-  transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* 延长过渡时间 */
+  will-change: transform, box-shadow; /* 性能优化 */
 }
+
 .filter-item.active {
   background: linear-gradient(90deg, #1D953F 70%, #2BB24C 100%);
   color: #fff;
   border-color: #1D953F;
-  box-shadow: 0 8rpx 28rpx rgba(29,149,63,0.12);
+  box-shadow: 0 8rpx 28rpx rgba(29,149,63,0.2); /* 阴影加深 */
 }
+
 .filter-item:active {
-  transform: scale(0.97);
-  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.11);
+  transform: scale(0.95); /* 按压效果更明显 */
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.15);
 }
+
 .filter-item:hover {
-  transform: translateY(-2px) scale(1.01);
-  box-shadow: 0 10rpx 30rpx rgba(0,0,0,0.15);
+  transform: translateY(-3px) scale(1.02); /* 悬停效果增强 */
+  box-shadow: 0 12rpx 32rpx rgba(0,0,0,0.2);
 }
 
 /* 班次列表整体样式 */
 .schedule-list {
   margin-top: 25rpx;
   padding: 0 10rpx;
-  width: 92vw;
+  width: 90%;
   max-width: 600rpx;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* 班次卡片 */
+/* 优化筛选容器布局 */
+.filter-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+  padding: 0 4%;
+}
+
+/* 统一班次卡片尺寸 */
 .schedule-item {
-  width: 100%;
-  margin: 0 auto 36rpx auto;
-  padding: 0;
+  width: 94%;
+  margin: 0 auto 28rpx;
+}
+
+/* 调整信息区域间距 */
+.schedule-info {
+  margin: 18rpx 0;
+  gap: 14rpx;
+}
+
+/* 增强视觉平衡 */
+.driver-card {
+  box-shadow: 0 8rpx 32rpx rgba(29,149,63,0.1);
+  margin-bottom: 32rpx;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 375px) {
+  .route-name {
+    font-size: 34rpx;
+  }
+  .schedule-info text {
+    font-size: 26rpx;
+  }
+}
+.schedule-item {
+  width: 90%; /* 调整为百分比宽度 */
+  max-width: 680rpx; /* 增加最大宽度限制 */
+  margin: 0 auto 36rpx; /* 保持自动边距居中 */
+  padding: 20rpx 30rpx;
   background: linear-gradient(120deg, #fafdff 78%, #e8fff3 100%);
   border-radius: 32rpx;
   box-shadow: 0 10rpx 32rpx rgba(0,0,0,0.13), 0 1rpx 0 #e0f5ea;
   border: 1rpx solid #e2f4eb;
-  transition: box-shadow 0.2s, transform 0.16s;
-  position: relative;
-  overflow: hidden;
-  animation: fadeInUp 0.56s cubic-bezier(.51,1.17,.63,1.14) backwards;
-  display: block;
 }
-
 /* 放大缩小动画 */
 @keyframes fadeInUp {
   0% {
@@ -149,7 +177,11 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 18rpx;
+  padding: 0 10rpx; /* 增加内边距 */
+  font-size: 24rpx; /* 调小字体 */
 }
+
+
 
 .route-name {
   font-size: 38rpx;
@@ -177,31 +209,30 @@
   box-shadow: 0 1rpx 3rpx rgba(44,224,158,0.10);
 }
 
-/* 状态 */
+/* 状态标识单独调整 */
 .status {
-  padding: 8rpx 28rpx;
-  border-radius: 16rpx;
+  
+  border-radius: 16rpx; /* 添加圆角 */
   font-size: 26rpx;
   font-weight: bold;
   letter-spacing: 2rpx;
-  background: #ededed;
-  color: #858585;
+  height: auto; 
+  line-height: 38rpx; 
   border: none;
-  box-shadow: 0 2rpx 6rpx rgba(0,0,0,0.04);
 }
+
 /* 正常 */
 .status.normal {
-  background: linear-gradient(87deg, #e7f8ed 80%, #d6ffe8 100%);
   color: #1D953F;
 }
+
 /* 取消 */
 .status.canceled {
-  background: linear-gradient(87deg, #ffeaea 80%, #ffd6d6 100%);
   color: #d9534f;
 }
+
 /* 延误 */
 .status.delayed {
-  background: linear-gradient(87deg, #fffbe7 80%, #fff1a6 100%);
   color: #f7b500;
 }
 
