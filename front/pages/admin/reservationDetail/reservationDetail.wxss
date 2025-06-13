@@ -1,0 +1,251 @@
+/* pages/admin/reservationDetail/reservationDetail.wxss */
+/* 全局背景 */
+page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f6fbf9 0%, #e6f2ef 100%);
+  font-family: "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+/* 主容器 */
+.container {
+  padding: 48rpx 36rpx 44rpx 36rpx;
+  max-width: 900rpx;
+  margin: 40rpx auto;
+  box-sizing: border-box;
+  background: rgba(255,255,255,0.97);
+  border-radius: 28rpx;
+  box-shadow: 0 10rpx 36rpx rgba(44,224,158,0.09);
+  transition: box-shadow 0.18s;
+  border: 1rpx solid #e2f6ef;
+}
+
+/* 日期选择器区域 */
+.date-pickers {
+  display: flex;
+  gap: 22rpx;
+  margin-bottom: 46rpx;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* 单个日期选择器 */
+.date-picker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22rpx 44rpx;
+  background: linear-gradient(90deg,#fafdff 80%,#e8fff3 100%);
+  border-radius: 100rpx;
+  font-size: 30rpx;
+  color: #18b681;
+  font-weight: 600;
+  box-shadow: 0 2rpx 12rpx rgba(44,224,158,0.10);
+  border: 1rpx solid #d7f8ea;
+  cursor: pointer;
+  transition: background 0.18s, box-shadow 0.18s, color 0.18s, border 0.16s;
+  user-select: none;
+  letter-spacing: 1.5rpx;
+  min-width: 148rpx;
+  margin-bottom: 8rpx;
+}
+/* 选中状态 */
+.date-picker:active,
+.date-picker.selected {
+  background: linear-gradient(90deg, #e6f2ef 70%, #e8fff3 100%);
+  color: #0a7b4e;
+  border: 1rpx solid #1ec492;
+  box-shadow: 0 2rpx 8rpx rgba(44,224,158,0.13);
+}
+
+/* 分组卡片通用 */
+.analysis-card, .stat-item {
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 8rpx 28rpx rgba(44,224,158,0.09);
+  transition: box-shadow 0.19s;
+  margin-bottom: 44rpx;
+  border: none;
+  position: relative;
+  padding: 36rpx 28rpx 32rpx 28rpx;
+}
+.analysis-card:last-child, .stat-item:last-child {
+  margin-bottom: 0;  /* 删除底部间距 */
+}
+.analysis-card:not(:last-child), .stat-item:not(:last-child) {
+  border-bottom: 1rpx solid #f0f4f8;
+}
+
+/* 悬停效果 */
+.analysis-card:hover, .stat-item:hover {
+  box-shadow: 0 16rpx 38rpx rgba(44,224,158,0.12);
+}
+
+/* 卡片标题 */
+.card-title {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #1ec492;
+  margin-bottom: 20rpx;
+  letter-spacing: 2rpx;
+  text-shadow: 0 2rpx 8rpx #44e09e20;
+  line-height: 1.2;
+}
+
+/* AI分析内容 */
+.analysis-content {
+  padding: 26rpx 22rpx;
+  background: #f8f9fa;
+  border-radius: 16rpx;
+  font-size: 32rpx;
+  color: #207b59;
+  line-height: 1.8;
+  letter-spacing: 1.6rpx;
+  margin-bottom: 0;
+  word-break: break-all;
+  box-shadow: 0 2rpx 8rpx rgba(44,224,158,0.04);
+}
+
+/* 统计数据项 */
+.stat-item {
+  background: linear-gradient(90deg,#e6fff3 65%, #f6fefd 100%);
+  border-radius: 22rpx;
+  box-shadow: 0 4rpx 18rpx rgba(44,224,158,0.11);
+  border: 1rpx solid #d5fae7;
+  transition: box-shadow 0.19s, background 0.13s;
+  position: relative;
+  padding: 34rpx 26rpx 28rpx 26rpx;
+  margin-bottom: 20rpx;
+}
+/* 选中状态指示器 */
+.stat-item.selected::after {
+  content: '';
+  position: absolute;
+  right: 28rpx;
+  top: 28rpx;
+  width: 18rpx;
+  height: 18rpx;
+  border-radius: 50%;
+  background: #44e09e;
+  box-shadow: 0 0 8rpx #44e09e55;
+}
+/* 统计项选中状态 */
+.stat-item:active,
+.stat-item.selected {
+  box-shadow: 0 2rpx 12rpx rgba(68,224,158,0.13);
+  background: #fafdff;
+}
+
+/* 路线和时间信息 */
+.route-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18rpx;
+  font-weight: bold;
+  font-size: 34rpx;
+  color: #0a7b4e;
+  letter-spacing: 1.8rpx;
+  gap: 16rpx;
+  word-break: break-all;
+  padding-bottom: 12rpx;
+  border-bottom: 1rpx solid #f3f6fa;
+}
+
+/* 统计明细区域 */
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx 0;
+  margin-top: 8rpx;
+  background: #f6fbf9;
+  border-radius: 14rpx;
+  padding: 10rpx 0 0 0;
+}
+/* 统计项内容 */
+.stats text {
+  width: 50%;
+  margin-bottom: 14rpx;
+  font-size: 34rpx;
+  color: #209065;
+  font-weight: 600;
+  letter-spacing: 1rpx;
+  padding-left: 6rpx;
+  line-height: 1.6;
+}
+
+/* 加载中和无数据提示 */
+.loading, .no-data {
+  text-align: center;
+  padding: 60rpx 0;
+  color: #b2b2b2;
+  font-size: 32rpx;
+  letter-spacing: 2rpx;
+  background: transparent;
+}
+
+/* “暂无统计数据”图片 */
+.no-data image {
+  width: 190rpx;
+  height: 190rpx;
+  margin-bottom: 26rpx;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.75;
+}
+
+/* 响应式优化：小屏适配 */
+@media screen and (max-width: 400px) {
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: 100vw;
+    border-radius: 14rpx;
+  }
+  .stat-item, .analysis-card {
+    padding-left: 8rpx;
+    padding-right: 8rpx;
+    border-radius: 12rpx;
+  }
+  .date-picker {
+    padding-left: 12rpx;
+    padding-right: 12rpx;
+    font-size: 24rpx;
+    border-radius: 12rpx;
+  }
+  .card-title,
+  .route-info {
+    font-size: 26rpx;
+  }
+  .stats text,
+  .analysis-content {
+    font-size: 22rpx;
+  }
+}
+
+/* summary-stats兼容 */
+.summary-stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+  color: #666;
+  margin-top: 16rpx;
+}
+
+/* 无障碍优化 */
+:focus-visible {
+  outline: 2rpx solid #1ed67a;
+  outline-offset: 2rpx;
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+  width: 8rpx;
+  background: #f6fbf9;
+}
+::-webkit-scrollbar-thumb {
+  background: #d2f8e6;
+  border-radius: 8rpx;
+}

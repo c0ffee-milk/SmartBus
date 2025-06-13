@@ -1,0 +1,48 @@
+<!--pages/admin/reservationDetail/reservationDetail.wxml-->
+<navigation-bar title="预约详情" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+<view class="container">
+  <!-- 日期选择器 -->
+  <view class="date-pickers">
+    <picker mode="date" value="{{startDate}}" bindchange="onStartDateChange">
+      <view class="date-picker">起始日期：{{startDate}}</view>
+    </picker>
+    <picker mode="date" value="{{endDate}}" bindchange="onEndDateChange">
+      <view class="date-picker">终止日期：{{endDate}}</view>
+    </picker>
+  </view>
+
+  <!-- AI分析结果 -->
+  <view class="analysis-card" wx:if="{{analysis.summary}}">
+    <view class="card-title">AI分析建议</view>
+    <view class="analysis-content">
+      <text>{{analysis.suggestions}}</text>
+    </view>
+  </view>
+</view>
+  <!-- 统计数据列表 -->
+  <view wx:if="{{!loading && statistics.length > 0}}">
+    <view wx:for="{{statistics}}" wx:key="schedule_id" class="stat-item">
+      <view class="route-info">
+        <text>{{item.route_name}}</text>
+        <text>{{item.departure_time}}</text>
+      </view>
+      <view class="stats">
+        <text>总预约: {{item.total_reservations}}</text>
+        <text>活跃预约: {{item.active_reservations}}</text>
+        <text>已签到: {{item.checked_in}}</text>
+        <text>缺席: {{item.absent}}</text>
+        <text>取消: {{item.canceled}}</text>
+        <text>上座率: {{item.occupancy_rate}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view wx:if="{{loading}}" class="loading">加载中...</view>
+  
+  <!-- 无数据提示 -->
+  <view wx:if="{{!loading && statistics.length === 0}}" class="no-data">
+    <text>暂无统计数据</text>
+  </view>
+
+

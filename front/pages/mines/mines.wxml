@@ -1,0 +1,43 @@
+<!-- 自定义导航栏 -->
+<navigation-bar title="我的" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<!-- 页面容器 -->
+<view class="page-bg">
+  <!-- 页面内容 -->
+  <view class="container">
+    <!-- 信息卡片 -->
+    <view class="info-card-cug" bindtap="checkAuthentication">
+      <view class="info-card-cug-main">
+        <view class="info-cug-title">WHU通勤车预约</view>
+        <view class="info-cug-info">
+          <text class="info-cug-name">学工号：{{userCard || '待认证'}}</text>
+          <text class="info-cug-name">姓名：{{userName || '待认证'}}</text>
+          <text class="info-cug-role">身份：{{userRole || '待认证'}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 间隔 -->
+    <view class="spacer"></view>
+
+    <!-- 图标表单卡片 -->
+    <view class="menu-card">
+      <view class="menu-list-horizontal">
+        <view class="menu-item" bindtap="navigateToReservationList">
+          <image class="menu-icon" src="/images/reserve.png"/>
+          <text class="menu-text">我的预约</text>
+        </view>
+        <view class="menu-item" bindtap="navigateToReservationNotice">
+          <image class="menu-icon" src="/images/notice.png"/>
+          <text class="menu-text">预约须知</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 认证弹窗 -->
+<input-modal 
+  show="{{showInputModal}}" 
+  title="请输入认证信息" 
+  bind:hide="hideInputModal" 
+  bind:confirm="confirmInput"
+></input-modal>

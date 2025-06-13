@@ -1,0 +1,41 @@
+<navigation-bar title="管理界面" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<view class="page-bg">
+  <view class="container">
+    
+    <!-- 统计数据列表 -->
+    <view class="stats-list" wx:if="{{statistics.length > 0}}">
+      <view class="list-title">班次统计数据</view>
+      <view class="stats-item" wx:for="{{statistics}}" wx:key="schedule_id">
+        <view class="route-info">
+          <text class="route-name">{{item.route_name}}</text>
+          <text class="departure-time">{{item.departure_time}}</text>
+        </view>
+        <view class="stats-details">
+          <view>上座率: {{item.occupancy_rate}}</view>
+          <view>已签到: {{item.checked_in}}/{{item.total_seats}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 原有功能菜单 -->
+    <view class="form-card">
+      <view class="action-list">
+        <view class="action-item" hover-class="action-hover" bindtap="navigateToReservationDetail">
+          <image class="action-icon" src="/images/reserve.png"></image>
+          <text class="action-text">预约详情</text>
+          <image class="arrow-icon" src="/images/arrow-right.png"></image>
+        </view>
+        <view class="action-item" hover-class="action-hover" bindtap="navigateToExport">
+          <image class="action-icon" src="/images/scan.png"></image>
+          <text class="action-text">数据导出</text>
+          <image class="arrow-icon" src="/images/arrow-right.png"></image>
+        </view>
+        <view class="action-item" hover-class="action-hover" bindtap="navigateToBusAdjust">
+          <image class="action-icon" src="/images/pen.png"></image>
+          <text class="action-text">班车调整</text>
+          <image class="arrow-icon" src="/images/arrow-right.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

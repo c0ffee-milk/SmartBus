@@ -1,0 +1,107 @@
+<!-- 自定义导航栏 -->
+<navigation-bar title="班次情况" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<!-- 顶部日期选择器 -->
+<view class="date-picker">
+  <picker mode="date" value="{{currentDate}}" bindchange="onDateChange">
+    <view>{{currentDate}}</view>
+  </picker>
+</view>
+<!-- 添加按钮 -->
+<button type="primary" bindtap="addSchedule">添加班次</button>
+<!-- 班次列表 - 设置为可滚动视图 -->
+<scroll-view class="schedule-list" scroll-y="true" style="height: calc(100vh - 200px);">
+  <block wx:for="{{schedules}}" wx:key="id">
+    <view class="schedule-item">
+      <view class="info">
+        <text>{{item.time}}</text>
+        <text>{{item.route}}</text>
+        <text>{{item.start}} → {{item.end}}</text>
+      </view>
+      <view class="actions">
+        <button size="mini" bindtap="editSchedule" data-id="{{item.id}}">编辑</button>
+        <button size="mini" type="warn" bindtap="deleteSchedule" data-id="{{item.id}}">删除</button>
+      </view>
+    </view>
+  </block>
+</scroll-view>
+
+<!-- 添加/编辑班次的弹窗 -->
+<view wx:if="{{showDialog}}" class="dialog-mask">
+  <!-- 弹窗表单 -->
+  <view class="dialog-content">
+    <view class="dialog-header">
+      <text>{{dialogType === 'add' ? '添加班次' : '编辑班次'}}</text>
+      <button class="close-btn" bindtap="closeDialog">×</button>
+    </view>
+    
+    <form bindsubmit="submitForm">
+      <!-- 路线方向选择 -->
+      <view class="form-item">
+        <text>路线方向</text>
+        <picker name="direction" mode="selector" range="{{directionOptions}}" range-key="name" value="{{directionIndex}}" bindchange="onDirectionChange">
+          <view>{{directionOptions[directionIndex].name}}</view>
+        </picker>
+      </view>
+      
+      <!-- 起点选择 -->
+      <view class="form-item">
+        <text>起点</text>
+        <button bindtap="selectStartPoint">{{startPointOptions[startPointIndex]}}</button>
+      </view>
+      
+      <!-- 终点选择 -->
+      <view class="form-item">
+        <text>终点</text>
+        <button bindtap="selectEndPoint">{{endPointOptions[endPointIndex]}}</button>
+      </view>
+      
+      <!-- 发车日期选择 -->
+      <view class="form-item">
+        <text>发车日期</text>
+        <picker name="departure_date" mode="date" value="{{selectDate}}" bindchange="onSelectDateChange">
+          <view>{{selectDate || '请选择日期'}}</view>
+        </picker>
+      </view>
+      
+      <!-- 发车时间选择 -->
+      <view class="form-item">
+        <text>发车时间</text>
+        <picker name="departure_time" mode="time" value="{{selectTime}}" bindchange="onSelectTimeChange">
+          <view>{{selectTime || '请选择时间'}}</view>
+        </picker>
+      </view>
+      
+      <!-- 座位数 -->
+      <view class="form-item">
+        <text>座位数</text>
+        <input 
+          name="dynamic_capacity" 
+          type="number" 
+          value="{{formData.dynamic_capacity}}"
+          bindinput="handleDynamicCapacityInput" 
+          placeholder="请输入座位数"/>
+      </view>
+      
+      <!-- 车牌号 -->
+      <view class="form-item">
+        <text>车牌号</text>
+        <input 
+          name="vehicle_plate" 
+          value="{{formData.vehicle_plate}}"
+          placeholder="请输入车牌号"/>
+      </view>
+      
+      <!-- 司机ID -->
+      <view class="form-item">
+        <text>司机ID</text>
+        <input 
+          name="driver_id" 
+          type="number"
+          value="{{formData.driver_id}}"
+          placeholder="请输入司机ID"/>
+      </view>
+      
+      <button form-type="submit" type="primary">提交</button>
+    </form>
+  </view>
+</view>

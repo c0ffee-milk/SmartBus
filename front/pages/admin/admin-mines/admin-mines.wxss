@@ -1,0 +1,231 @@
+/* pages/admin/admin-mines/admin-mines.wxss */
+/* 页面背景颜色 */
+.page-bg {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e9f6ff 0%, #f5f7fa 100%);
+  }
+  
+  /* 容器样式 */
+  .container {
+    padding: 36rpx 0 90rpx 0;
+    max-width: 98vw;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  
+  /* 间隔分割线 */
+  .spacer {
+    height: 28rpx;
+    width: 100%;
+    background: transparent;
+  }
+  
+  /* 管理员信息卡片 */
+  .admin-card.admin-row {
+    display: flex;
+    align-items: center;
+    padding: 42rpx 38rpx;
+    width: 100%;
+    margin: 0 auto 18rpx auto;
+    background: linear-gradient(90deg, rgba(145,231,227,0.75) 0%, rgba(182,226,252,0.70) 100%);
+    border-radius: 30rpx;
+    box-shadow: 0 10rpx 32rpx 0 rgba(39, 174, 255, 0.14), 0 2rpx 8rpx 0 rgba(110, 217, 255, 0.10);
+    backdrop-filter: blur(8rpx);
+    border: 2rpx solid #e0faff;
+    transition: box-shadow .25s;
+    margin-bottom: 38rpx;
+  }
+  
+  /* 头像样式 */
+  .avatar {
+    width: 130rpx;
+    height: 130rpx;
+    border-radius: 50%;
+    background: #fff;
+    border: 5rpx solid #b8e0ef;
+    object-fit: cover;
+    margin-right: 38rpx;
+    box-shadow: 0 3rpx 18rpx 0 rgba(0,0,0,0.09);
+  }
+  
+  /* 信息区域 */
+  .admin-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6rpx;
+  }
+  
+  /* 信息项字体样式 */
+  .info-item {
+    font-size: 36rpx;
+    color: #1a3c4c;
+    margin-bottom: 10rpx;
+    font-weight: 700;
+    letter-spacing: 1.5rpx;
+    display: block;
+    text-shadow: 0 2rpx 8rpx #e9f6ffaa;
+  }
+  
+  /* 功能菜单卡片 */
+  .form-card {
+    width: 100%;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.98);
+    border-radius: 24rpx;
+    box-shadow: 0 12rpx 32rpx rgba(39, 174, 255, 0.09), 0 2rpx 8rpx #e0f6ff;
+    padding: 36rpx 20rpx 22rpx 20rpx;
+    border: 2rpx solid #e4f1ff;
+    backdrop-filter: blur(6rpx);
+    box-sizing: border-box;
+    margin-bottom: 20rpx;
+  }
+  
+  /* 功能项列表 */
+  .action-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4rpx;
+  }
+  
+  /* 单个功能项样式 */
+  .action-item {
+    display: flex;
+    align-items: center;
+    padding: 32rpx 14rpx 26rpx 10rpx;
+    border-bottom: 1px solid #f1f6fa;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    border-radius: 16rpx;
+    transition: background .18s, box-shadow .18s;
+  }
+  .action-item:last-child {
+    border-bottom: none;  /* 最后一项无底部分割线 */
+  }
+  .action-hover, .action-item:active {
+    background: linear-gradient(90deg, #f4fcff 60%, #e4f7fa 100%);
+    box-shadow: 0 2rpx 12rpx 0 rgba(39, 174, 255, 0.08);
+  }
+  
+  /* 功能项图标样式 */
+  .action-icon {
+    width: 58rpx;
+    height: 58rpx;
+    margin-right: 28rpx;
+    flex-shrink: 0;
+    border-radius: 16rpx;
+    background: linear-gradient(135deg, #e4f1ff 40%, #f7fafd 100%);
+    box-shadow: 0 1rpx 6rpx 0 rgba(90,156,255,0.05);
+  }
+  
+  /* 功能项文字样式 */
+  .action-text {
+    font-size: 34rpx;
+    color: #232a32;
+    flex: 1;
+    font-weight: 700;
+    letter-spacing: 1.5rpx;
+    text-shadow: 0 2rpx 8rpx #e9f6ff70;
+  }
+  
+  /* 箭头样式 */
+  .arrow-icon {
+    width: 34rpx;
+    height: 34rpx;
+    margin-left: 20rpx;
+    opacity: 0.48;
+    flex-shrink: 0;
+    transition: transform .18s;
+  }
+  .action-item:active .arrow-icon, .action-hover .arrow-icon {
+    transform: translateX(4rpx) scale(1.06);
+  }
+
+
+
+.date-item {
+  padding: 12rpx 24rpx;
+  background: #f5f7fa;
+  border-radius: 8rpx;
+  margin: 0 10rpx;
+}
+
+
+
+.card-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+  color: #333;
+}
+
+.analysis-content {
+  padding: 16rpx;
+  background: #f8f9fa;
+  border-radius: 8rpx;
+  margin-bottom: 16rpx;
+}
+
+.summary-stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+  color: #666;
+}
+
+/* 统计数据列表 */
+.stats-list {
+  margin-bottom: 24rpx;
+}
+
+.list-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+  color: #333;
+}
+
+.stats-item {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 16rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+}
+
+.route-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12rpx;
+}
+
+.route-name {
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.departure-time {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.stats-details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+  color: #666;
+}
+
+/* 保留原有样式 */
+.page-bg {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e9f6ff 0%, #f5f7fa 100%);
+}
+
+.container {
+  padding: 36rpx 0 90rpx 0;
+  max-width: 98vw;
+  margin: 0 auto;
+  box-sizing: border-box;
+}

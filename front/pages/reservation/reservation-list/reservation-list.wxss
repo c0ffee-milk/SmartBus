@@ -1,0 +1,218 @@
+/* 页面背景样式 */
+.my-reservation-bg {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* 状态选择器容器 */
+.status-filter-container {
+  padding: 20rpx 30rpx;
+  background-color: #fff;
+}
+
+/* 状态选择器样式 */
+.status-filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f8f8f8;
+  border-radius: 8rpx;
+  padding: 16rpx 20rpx;
+}
+
+/* 选择器文本样式 */
+.filter-text {
+  font-size: 30rpx;
+  color: #333;
+}
+
+/* 选择器图标样式 */
+.filter-icon {
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 10rpx;
+}
+
+/* 预约记录容器 */
+.my-reservation-container {
+  padding: 0 30rpx 20rpx;
+  padding-bottom: 100rpx; /* 添加底部内边距 */
+}
+
+/* 滚动视图样式 */
+.reservation-scroll {
+  width: 100%;
+  height: calc(100vh - 300rpx); /* 调整高度计算 */
+}
+
+/* 预约卡片样式 */
+.reservation-card {
+  background-color: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+  animation: fadeIn 0.3s ease-out forwards;
+  opacity: 0;
+}
+
+/* 卡片淡入动画 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 卡片头部样式 */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+
+/* 日期行样式 */
+.reservation-date-row {
+  display: flex;
+  align-items: center;
+}
+
+/* 日期图标样式 */
+.reservation-date-icon {
+  font-size: 32rpx;
+  margin-right: 12rpx;
+}
+
+/* 日期文本样式 */
+.reservation-date-text {
+  font-size: 28rpx;
+  color: #666;
+}
+
+/* 状态标签样式 */
+.reservation-status {
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+}
+
+/* 不同状态的颜色 */
+.reservation-status text {
+  color: #fff;
+}
+
+/* 行程路线容器 */
+.route-container {
+  position: relative;
+  padding-left: 40rpx;
+  margin-bottom: 28rpx;
+}
+
+/* 路线点样式 */
+.route-point {
+  position: relative;
+  margin-bottom: 30rpx;
+}
+
+/* 时间线 */
+.timeline-line {
+  position: absolute;
+  left: -30rpx;
+  top: 24rpx;
+  bottom: 54rpx;
+  width: 4rpx;
+  background-color: #E5E5E5;
+}
+
+/* 位置文本样式 */
+.location-content {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+/* 详细信息容器 */
+.detail-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx 40rpx;
+  margin-bottom: 28rpx;
+}
+
+/* 详细信息项 */
+.detail-item {
+  display: flex;
+  align-items: center;
+}
+
+/* 标签样式 */
+.detail-label {
+  font-size: 26rpx;
+  color: #999;
+  margin-right: 8rpx;
+}
+
+/* 值样式 */
+.detail-value {
+  font-size: 26rpx;
+  color: #333;
+}
+
+/* 操作按钮容器 */
+.action-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* 取消按钮样式 */
+.cancel-btn {
+  background-color: #F53F3F;
+  color: #fff;
+  border: none;
+  border-radius: 8rpx;
+  padding: 12rpx 30rpx;
+  font-size: 26rpx;
+  line-height: 1.4;
+}
+
+/* 空状态样式 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400rpx;
+}
+
+/* 空状态文本 */
+.empty-text {
+  font-size: 30rpx;
+  color: #999;
+  margin-top: 20rpx;
+}
+
+.reservation-card {
+    background-color: #fff;
+    border-radius: 16rpx;
+    padding: 30rpx;
+    margin-bottom: 24rpx; /* 保持卡片间距但确保容器有足够空间 */
+    box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+    animation: fadeIn 0.3s ease-out forwards;
+    opacity: 0;
+    transform: translateZ(0); /* 启用硬件加速 */
+    transition: transform 0.2s ease-out;
+    will-change: transform;
+  }
+  
+  /* 调整滚动容器样式 */
+  .reservation-scroll {
+    width: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }

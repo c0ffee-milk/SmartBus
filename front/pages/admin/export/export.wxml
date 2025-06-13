@@ -1,0 +1,47 @@
+<!-- pages/admin/export/export.wxml -->
+<navigation-bar title="数据导出" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+
+<view class="container">
+  <!-- 日期选择区域 -->
+  <view class="date-picker">
+    <view class="date-item">
+      <text class="date-label">开始日期</text>
+      <picker 
+        mode="date" 
+        fields="day" 
+        start="2023-01-01" 
+        end="2030-12-31" 
+        bindchange="bindStartDateChange"
+      >
+        <view class="selected-date">{{startDate || '请选择'}}</view>
+      </picker>
+    </view>
+    
+    <view class="date-item">
+      <text class="date-label">结束日期</text>
+      <picker 
+        mode="date" 
+        fields="day" 
+        start="2023-01-01" 
+        end="2030-12-31" 
+        bindchange="bindEndDateChange"
+      >
+        <view class="selected-date">{{endDate || '请选择'}}</view>
+      </picker>
+    </view>
+  </view>
+
+  <!-- 导出按钮 -->
+  <button 
+    class="export-btn" 
+    bindtap="exportExcel" 
+    disabled="{{loading || !startDate || !endDate}}"
+  >
+    {{loading ? '导出中...' : '导出Excel'}}
+  </button>
+
+  <!-- 加载状态 -->
+  <view wx:if="{{loading}}" class="loading">
+    <text>正在导出数据，请稍候...</text>
+  </view>
+</view>

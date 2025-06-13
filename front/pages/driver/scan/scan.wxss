@@ -1,0 +1,66 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40rpx;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+
+.loading image {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.scan-btn {
+  width: 80%;
+  height: 100rpx;
+  line-height: 100rpx;
+  background: #07C160;
+  color: white;
+  border-radius: 50rpx;
+  margin-top: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scan-btn image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
+
+.btn-hover {
+  opacity: 0.8;
+}
+
+.result {
+  margin-top: 40rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.checkin-info {
+  margin-top: 40rpx;
+  width: 80%;
+  padding: 30rpx;
+  background: #f7f7f7;
+  border-radius: 20rpx;
+}
+
+.info-item {
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.info-item:last-child {
+  margin-bottom: 0;
+}
+  

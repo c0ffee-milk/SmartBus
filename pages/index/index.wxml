@@ -1,3 +1,0 @@
-<!--index.wxml-->
-<navigation-bar title="智慧班车" back="{{false}}" color="black" background="#FFF"></navigation-bar>
-

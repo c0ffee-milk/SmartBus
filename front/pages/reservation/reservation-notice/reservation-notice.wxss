@@ -1,0 +1,153 @@
+/* 页面容器 */
+.page-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f6fbf9 0%, #e6f2ef 100%);
+  padding: 0 0 40rpx 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 卡片 */
+.reservation-notice-card {
+  width: 92vw;
+  max-width: 700rpx;
+  margin: 44rpx auto 0 auto;
+  background: #fff;
+  border-radius: 32rpx;
+  box-shadow: 0 8rpx 32rpx 0 rgba(61, 201, 137, 0.10);
+  padding: 0 0 36rpx 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 顶部渐变条 */
+.card-gradient-bar {
+  height: 14rpx;
+  width: 100%;
+  background: linear-gradient(90deg,#3dc989 0%, #10b16a 100%);
+  border-radius: 32rpx 32rpx 0 0;
+}
+
+/* 标题 */
+.notice-title {
+  display: flex;
+  align-items: center;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #10b16a;
+  margin: 34rpx 0 30rpx 0;
+  letter-spacing: 1.5rpx;
+  justify-content: center;
+}
+
+/* 图标 */
+.notice-icon {
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 14rpx;
+  vertical-align: middle;
+}
+
+/* 条目容器 */
+.notice-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+  padding: 0 38rpx;
+}
+
+/* 单条条目 */
+.notice-item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0;
+  background: none;
+}
+
+/* 序号圆圈 */
+.notice-num {
+  min-width: 36rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg,#3dc989 60%, #10b16a 100%);
+  color: #fff;
+  font-size: 24rpx;
+  font-weight: 700;
+  margin-right: 18rpx;
+  text-align: center;
+  box-shadow: 0 2rpx 8rpx #3DC98922;
+  flex-shrink: 0;
+  margin-top: 7rpx;
+}
+
+/* 条目内容 */
+.notice-text {
+  font-size: 30rpx;
+  color: #344a3d;
+  line-height: 1.85;
+  word-break: break-all;
+  letter-spacing: 0.5rpx;
+}
+
+/* 底部分隔线 */
+.card-bottom-divider {
+  margin: 44rpx auto 0 auto;
+  width: 84vw;
+  max-width: 600rpx;
+  height: 2rpx;
+  border-radius: 1rpx;
+  background: linear-gradient(90deg,#e6fff6 0%, #e2f7ed 100%);
+  opacity: 0.7;
+}
+
+/* ===== 柔和弹性动画 ===== */
+/* 卡片淡入动画 */
+.mild-animated-card {
+  animation: mildCardFadeIn 0.5s cubic-bezier(.33,1,.52,1) backwards;
+}
+@keyframes mildCardFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.96) translateY(24rpx);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* 条目淡入动画 */
+.mild-animated-item {
+  opacity: 0;
+  animation: mildItemFadeIn .36s cubic-bezier(.27,1,.45,.95) forwards;
+}
+@keyframes mildItemFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(22rpx);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* 不同条目渐变延迟 */
+.item-delay-1 { animation-delay: .20s; }
+.item-delay-2 { animation-delay: .30s; }
+.item-delay-3 { animation-delay: .40s; }
+.item-delay-4 { animation-delay: .50s; }
+
+/* 小屏适配 */
+@media screen and (max-width: 350px) {
+  .reservation-notice-card { padding: 0 0 18rpx 0; }
+  .notice-title { font-size: 24rpx; margin: 20rpx 0 18rpx 0; }
+  .notice-list { padding: 0 12rpx; }
+  .notice-text { font-size: 18rpx; }
+  .notice-num { min-width: 26rpx; height: 26rpx; font-size: 14rpx;}
+  .notice-icon { width: 28rpx; height: 28rpx;}
+  .card-bottom-divider { width: 94vw; }
+}

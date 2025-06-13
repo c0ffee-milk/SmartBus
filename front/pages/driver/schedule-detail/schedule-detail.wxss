@@ -1,0 +1,293 @@
+/* 页面容器 */
+.container {
+  padding: 40rpx 0 110rpx 0;
+  background-color: #f7f7f7;
+  min-height: 100vh;
+  max-width: 96vw;
+  margin: 0 auto;
+}
+
+/* 加载状态 */
+.loading {
+  text-align: center;
+  padding: 56rpx 0 48rpx 0;
+  color: #aaa;
+  font-size: 30rpx;
+  letter-spacing: 2rpx;
+  background: linear-gradient(90deg,#fafdff 60%,#e8fff3 100%);
+  border-radius: 20rpx;
+  margin-bottom: 30rpx;
+  animation: fadeInUp 0.5s;
+}
+
+/* 班次卡片 */
+.schedule-card {
+  background: linear-gradient(120deg, #fafdff 80%, #e8fff3 100%);
+  border-radius: 32rpx;
+  padding: 52rpx 44rpx 40rpx 44rpx;
+  margin-bottom: 38rpx;
+  box-shadow: 0 12rpx 36rpx rgba(0,0,0,0.10),0 1rpx 0 #e0f5ea;
+  border: 1rpx solid #e2f4eb;
+  animation: fadeInUp 0.5s;
+  position: relative;
+  overflow: visible;
+}
+
+/* 入场动画 */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(36rpx) scale(0.98);}
+  100% { opacity: 1; transform: translateY(0) scale(1);}
+}
+
+/* 卡片头部 */
+.schedule-card .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 36rpx;
+  border-bottom: 1rpx solid #e8f7ec;
+  padding-bottom: 20rpx;
+}
+
+/* 标题 */
+.schedule-card .title {
+  font-size: 44rpx;
+  font-weight: 900;
+  color: #232323;
+  letter-spacing: 2rpx;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  padding-left: 38rpx;
+}
+.schedule-card .title::before {
+  content: "";
+  display: inline-block;
+  width: 22rpx;
+  height: 22rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2bb24c 70%, #44e09e 100%);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 1rpx 3rpx rgba(44,224,158,0.10);
+}
+
+/* 状态 */
+.schedule-card .status {
+  font-size: 28rpx;
+  padding: 10rpx 38rpx;
+  border-radius: 20rpx;
+  font-weight: bold;
+  letter-spacing: 2rpx;
+  background: #ededed;
+  color: #858585;
+  border: none;
+  box-shadow: 0 2rpx 6rpx rgba(0,0,0,0.04);
+  transition: background 0.2s, color 0.2s;
+}
+/* 正常 */
+.schedule-card .status.normal {
+  background: linear-gradient(87deg, #e7f8ed 80%, #d6ffe8 100%);
+  color: #1D953F;
+}
+/* 取消 */
+.schedule-card .status.canceled {
+  background: linear-gradient(87deg, #ffeaea 80%, #ffd6d6 100%);
+  color: #d9534f;
+}
+/* 延误 */
+.schedule-card .status.delayed {
+  background: linear-gradient(87deg, #fffbe7 80%, #fff1a6 100%);
+  color: #f7b500;
+}
+
+/* 班次信息行 */
+.schedule-card .info-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 18rpx;
+}
+
+/* 信息项标签 */
+.schedule-card .label {
+  color: #999;
+  width: 160rpx;
+  font-size: 28rpx;
+}
+
+/* 信息项值 */
+.schedule-card .value {
+  flex: 1;
+  color: #333;
+  font-size: 28rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 数据统计区 */
+.schedule-card .stats {
+  display: flex;
+  margin-top: 38rpx;
+  padding-top: 24rpx;
+  border-top: 1rpx solid #e5e5e5;
+  gap: 28rpx;
+}
+
+/* 统计项 */
+.schedule-card .stat-item {
+  flex: 1;
+  text-align: center;
+  background: #f6fffa;
+  border-radius: 18rpx;
+  margin: 0 4rpx;
+  box-shadow: 0 2rpx 8rpx rgba(29,149,63,0.05);
+  padding: 12rpx 0 8rpx 0;
+}
+
+/* 统计主数字 */
+.schedule-card .stat-value {
+  font-size: 38rpx;
+  font-weight: bold;
+  color: #07c160;
+  margin-bottom: 2rpx;
+  display: block;
+  letter-spacing: 2rpx;
+}
+
+/* 统计标签 */
+.schedule-card .stat-label {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 乘客列表 */
+.passenger-list {
+  background: #fff;
+  border-radius: 28rpx;
+  overflow: hidden;
+  margin-bottom: 38rpx;
+  box-shadow: 0 6rpx 20rpx rgba(0,0,0,0.06);
+  border: 1rpx solid #f1f1f1;
+  animation: fadeInUp 0.35s;
+}
+
+/* 列表头 */
+.list-header {
+  padding: 28rpx 38rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  border-bottom: 1rpx solid #e5e5e5;
+  background: #fafdff;
+  letter-spacing: 1rpx;
+}
+
+/* 乘客列表 */
+.passenger-item {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 38rpx;
+  border-bottom: 1rpx solid #f5f5f5;
+  transition: background 0.18s;
+}
+.passenger-item:last-child {
+  border-bottom: none;  /* 最后无分割 */
+}
+.passenger-item:active {
+  background: #e8fff3;
+}
+
+/* 乘客姓名 */
+.passenger-item .name {
+  flex: 1;
+  font-size: 30rpx;
+  color: #222;
+  font-weight: 600;
+  letter-spacing: 1rpx;
+  display: flex;
+  align-items: center;
+  gap: 14rpx;
+}
+/* 圆点 */
+.passenger-item .name::before {
+  content: "";
+  display: inline-block;
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 50%;
+  background: #e8fff3;
+  border: 2rpx solid #2bb24c;
+  margin-right: 8rpx;
+}
+
+/* 座位 */
+.passenger-item .seat {
+  width: 120rpx;
+  color: #999;
+  font-size: 28rpx;
+  text-align: center;
+}
+
+/* 状态 */
+.passenger-item .status {
+  width: 110rpx;
+  text-align: right;
+  font-size: 24rpx;
+  font-weight: bold;
+  letter-spacing: 1rpx;
+  position: relative;
+  padding-left: 26rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+/* 圆点 */
+.passenger-item .status::before {
+  content: "";
+  display: inline-block;
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 50%;
+  margin-right: 6rpx;
+}
+/* 预约 */
+.passenger-item .status.active {
+  color: #1989fa;
+}
+/* 圆点 */
+.passenger-item .status.active::before {
+  background: #1989fa;
+}
+/* 签到 */
+.passenger-item .status.checked_in {
+  color: #07c160;
+}
+/* 圆点 */
+.passenger-item .status.checked_in::before {
+  background: #07c160;
+}
+/* 取消 */
+.passenger-item .status.canceled {
+  color: #f76260;
+}
+/* 圆点 */
+.passenger-item .status.canceled::before {
+  background: #f76260;
+}
+
+/* 空数据提示 */
+.empty-tip {
+  text-align: center;
+  padding: 60rpx 0 52rpx 0;
+  color: #bbb;
+  font-size: 30rpx;
+  letter-spacing: 2rpx;
+  background: linear-gradient(90deg,#fafdff 60%,#e8fff3 100%);
+  border-radius: 18rpx;
+  margin-top: 32rpx;
+  animation: fadeInUp 0.6s;
+}
